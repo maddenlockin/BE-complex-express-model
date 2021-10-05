@@ -54,6 +54,15 @@ describe('routes for animals table', () => {
             });
     });
 
+    it('deletes an Animal by id', async () => {
+        const entry = await Animals.create(animal);
+
+        return request(app)
+            .delete(`/api/animals/${entry.id}`)
+            .then((res) => {expect(res.body).toEqual({});
+            });
+    });
+    
     afterAll(() => {
         pool.end();
     });

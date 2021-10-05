@@ -14,7 +14,7 @@ describe('routes for animals table', () => {
         size: 'medium'
     };
 
-    it('POSTS a new animal', () => {
+    it('is a Route to add a new Animal ', () => {
         return request(app)
             .post('/api/animals')
             .send(animal)
@@ -23,6 +23,16 @@ describe('routes for animals table', () => {
                     id: '1',
                     ...animal,
                 });
+            });
+    });
+
+    it('is a Route to get an Animal by id', async () => {
+        const entry = await animal.create(animal);
+        
+        return request(app)
+            .get('/api/animals')
+            .then((res) => {
+                expect(res.body).toEqual(entry);
             });
     });
 

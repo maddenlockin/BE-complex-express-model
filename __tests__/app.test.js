@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import Animals from '../lib/models/Animals.js';
 
 describe('routes for animals table', () => {
     beforeEach(() => {
@@ -27,10 +28,10 @@ describe('routes for animals table', () => {
     });
 
     it('is a Route to get an Animal by id', async () => {
-        const entry = await animal.create(animal);
+        const entry = await Animals.create(animal);
         
         return request(app)
-            .get('/api/animals')
+            .get('/api/animals/1')
             .then((res) => {
                 expect(res.body).toEqual(entry);
             });

@@ -38,6 +38,16 @@ describe('routes for animals table', () => {
             });
     });
 
+    it('is a route to get all Animals with their Species', () => {
+        return request(app)
+            .get('/api/animals')
+            .then((res) => {
+                expect (res.body).toEqual([
+                    { id: expect.any(Number), species: expect.any(Object), name: expect.any(String) },
+                ]);
+            });
+    });
+
     it('updates an Animal by id', async () => {
         const entry = await Animals.create(animal);
         const updateEntry = {

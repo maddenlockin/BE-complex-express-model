@@ -3,11 +3,11 @@ DROP TABLE IF EXISTS animals;
 
 CREATE TABLE species (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    name TEXT NOT NULL,
+    type TEXT NOT NULL,
     extinct BOOL NOT NULL
 );
 
-INSERT INTO species (name, extinct)
+INSERT INTO species (type, extinct)
 VALUES ('birds', 'false'), ('fish', 'false'), ('mammals', 'false'), ('reptiles', 'false'), ('dinosaurs', 'true');
 
 CREATE TABLE animals (

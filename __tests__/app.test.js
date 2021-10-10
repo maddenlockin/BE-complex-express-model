@@ -11,7 +11,7 @@ describe('routes for animals table', () => {
     });
 
     const animal = {
-        species_id: '1',
+        speciesId: '1',
         name: 'mourning dove',
         size: 'small'
     };
@@ -23,6 +23,7 @@ describe('routes for animals table', () => {
             .then((res) => {
                 expect(res.body).toEqual({
                     id: '16',
+                    species: expect.any(Object),
                     ...animal,
                 });
             });
@@ -43,7 +44,21 @@ describe('routes for animals table', () => {
             .get('/api/animals')
             .then((res) => {
                 expect (res.body).toEqual([
-                    { id: expect.any(Number), species: expect.any(Object), name: expect.any(String) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) },
+                    { id: expect.any(String), name: expect.any(String), species: expect.any(Object) }
                 ]);
             });
     });
@@ -52,7 +67,8 @@ describe('routes for animals table', () => {
         const entry = await Animals.create(animal);
         const updateEntry = {
             id: entry.id,
-            species_id: entry.species_id,
+            speciesId: entry.speciesId,
+            species: entry.species,
             name: entry.name,
             size: 'small',
         };

@@ -12,8 +12,8 @@ describe('routes for animals table', () => {
 
     const animal = {
         species_id: '1',
-        name: 'crow',
-        size: 'medium'
+        name: 'mourning dove',
+        size: 'small'
     };
 
     it('is a Route to add a new Animal ', () => {
@@ -22,7 +22,7 @@ describe('routes for animals table', () => {
             .send(animal)
             .then((res) => {
                 expect(res.body).toEqual({
-                    id: '1',
+                    id: '16',
                     ...animal,
                 });
             });
@@ -32,7 +32,7 @@ describe('routes for animals table', () => {
         const entry = await Animals.create(animal);
         
         return request(app)
-            .get('/api/animals/1')
+            .get('/api/animals/16')
             .then((res) => {
                 expect(res.body).toEqual(entry);
             });

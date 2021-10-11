@@ -31,7 +31,6 @@ describe('routes for animals table', () => {
 
     it('is a Route to get an Animal by id', async () => {
         const entry = await Animals.create(animal);
-        
         return request(app)
             .get('/api/animals/16')
             .then((res) => {

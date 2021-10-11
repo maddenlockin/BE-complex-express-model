@@ -25,16 +25,16 @@ describe('routes for species table', () => {
             });
     });
 
-    xit('Gets all species', () => {
+    it('Gets all species', () => {
         return request(app)
             .get('/api/species')
             .then((res) => {
-                console.log(res.body.type);
-                expect(res.body.type).toEqual([
-                    { type: 'birds' },
-                    { type: 'fish' },
-                    { type: 'mammals' },
-                    { type: 'reptiles' }
+                expect(res.body).toEqual([
+                    { type: 'birds', extinct: 'false', id: '1' },
+                    { type: 'fish', extinct: 'false', id: '2' },
+                    { type: 'mammals', extinct: 'false', id: '3' },
+                    { type: 'reptiles', extinct: 'false', id: '4' },
+                    { type: 'dinosaurs', extinct: 'true', id: '5' }
                 ]);
             });
     });

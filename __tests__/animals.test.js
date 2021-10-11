@@ -88,6 +88,20 @@ describe('routes for animals table', () => {
             .then((res) => {expect(res.body).toEqual({});
             });
     });
+
+    xit('counts animals by species', () => {
+        return request(app)
+            .get('/api/animals/counts')
+            .then((res) => {
+                expect(res.body).toEqual([
+                    { type: 'birds', count: '3' }, 
+                    { type: 'fish', count: '3' },
+                    { type: 'mammals', count: '3' },
+                    { type: 'reptiles', count: '3' },
+                    { type: 'dinosaurs', count: '3' }
+                ]);
+            });
+    });
     
     afterAll(() => {
         pool.end();

@@ -22,7 +22,7 @@ Think about how you can make your routes `REST`ful when they don't follow the ty
 * Route to get all `Species` (1 point)
 * - Route to add a new `Animal` (1 point)
 * - Route to get an `Animal` by `id` (1 point)
-* Route to get all `Animal`s and include their `Species` (2 points)
+* - Route to get all `Animal`s and include their `Species` (2 points)
 * - Route to update an `Animal` (1 point)
 * - Route to delete an `Animal` (1 point)
 * Route to get a count of `Animal`s by `Species` (2 points)

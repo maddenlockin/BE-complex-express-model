@@ -39,6 +39,19 @@ describe('routes for species table', () => {
             });
     });
 
+    it('update species extinction data', () => {
+        return request(app)
+            .patch('/api/species/4')
+            .send({ extinct: 'true' })
+            .then((res) => {
+                expect(res.body).toEqual({
+                    id: '4',
+                    type: 'reptiles',
+                    extinct: 'true'
+                });
+            });
+    });
+
     afterAll(() => {
         pool.end();
     });

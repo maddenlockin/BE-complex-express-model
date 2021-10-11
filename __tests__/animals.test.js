@@ -3,7 +3,6 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 import Animals from '../lib/models/Animals.js';
-import animals from '../lib/controllers/animals.js';
 
 describe('routes for animals table', () => {
     beforeEach(() => {

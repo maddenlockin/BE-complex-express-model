@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import Species from '../lib/models/Species.js';
 
 describe('routes for species table', () => {
     beforeEach(() => {
@@ -30,25 +31,27 @@ describe('routes for species table', () => {
             .get('/api/species')
             .then((res) => {
                 expect(res.body).toEqual([
-                    { type: 'birds', extinct: 'false', id: '1' },
-                    { type: 'fish', extinct: 'false', id: '2' },
-                    { type: 'mammals', extinct: 'false', id: '3' },
-                    { type: 'reptiles', extinct: 'false', id: '4' },
-                    { type: 'dinosaurs', extinct: 'true', id: '5' }
+                    { type: 'birds', extinct: false, id: '1' },
+                    { type: 'fish', extinct: false, id: '2' },
+                    { type: 'mammals', extinct: false, id: '3' },
+                    { type: 'reptiles', extinct: false, id: '4' },
+                    { type: 'dinosaurs', extinct: true, id: '5' }
                 ]);
             });
     });
 
-    it('update species extinction data', () => {
+    xit('updates species extinction data', async() => {
+        const entry = await Species.create(newSpecies);
+        const updateEntry = {
+            id: entry.id,
+            type: entry.type,
+            extinct: 'true',
+        };
         return request(app)
-            .patch('/api/species/4')
-            .send({ extinct: 'true' })
+            .patch(`/api/species/${entry.id}`)
+            .send(updateEntry)
             .then((res) => {
-                expect(res.body).toEqual({
-                    id: '4',
-                    type: 'reptiles',
-                    extinct: 'true'
-                });
+                expect(res.body).toEqual({ updateEntry });
             });
     });
 

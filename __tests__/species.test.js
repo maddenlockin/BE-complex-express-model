@@ -24,6 +24,21 @@ describe('routes for species table', () => {
                 });
             });
     });
+
+    xit('Gets all species', () => {
+        return request(app)
+            .get('/api/species')
+            .then((res) => {
+                console.log(res.body.type);
+                expect(res.body.type).toEqual([
+                    { type: 'birds' },
+                    { type: 'fish' },
+                    { type: 'mammals' },
+                    { type: 'reptiles' }
+                ]);
+            });
+    });
+
     afterAll(() => {
         pool.end();
     });

@@ -18,7 +18,7 @@ Think about how you can make your routes `REST`ful when they don't follow the ty
 
 ## Rubric
 
-* Route to add a new `Species` (1 point)
+* - Route to add a new `Species` (1 point)
 * Route to get all `Species` (1 point)
 * - Route to add a new `Animal` (1 point)
 * - Route to get an `Animal` by `id` (1 point)
